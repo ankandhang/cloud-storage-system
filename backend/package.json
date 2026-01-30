@@ -1,0 +1,19 @@
+{
+  "name": "cloud-storage-backend",
+  "version": "1.0.0",
+  "description": "AWS Serverless Backend for Secure File Storage System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node local-server.js",
+    "deploy": "echo \"Use CloudFormation or SAM to deploy\"",
+    "test": "echo \"No tests configured yet\""
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.500.0",
+    "@aws-sdk/client-dynamodb": "^3.500.0",
+    "@aws-sdk/lib-dynamodb": "^3.500.0",
+    "@aws-sdk/s3-request-presigner": "^3.500.0",
+    "uuid": "^9.0.1",
+    "dotenv": "^16.4.0"
+  }
+}

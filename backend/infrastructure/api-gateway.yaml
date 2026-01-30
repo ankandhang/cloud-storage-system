@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: API Gateway + Lambda integrations
+
+Parameters:
+  LambdaRoleArn:
+    Type: String
+
+Resources:
+
+  ApiGateway:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: cloud-storage-api
+
+  PresignLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: generate-presigned-url
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !Ref LambdaRoleArn
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: "ok" });
+
+  UploadMetaLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: upload-file-metadata
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !Ref LambdaRoleArn
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: "ok" });
+
+  ListFilesLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: list-files
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !Ref LambdaRoleArn
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: "ok" });
+
+  DeleteFileLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: delete-file
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !Ref LambdaRoleArn
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: "ok" });

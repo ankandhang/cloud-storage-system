@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: DynamoDB table for file metadata
+
+Resources:
+  FilesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-files
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: fileId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: fileId
+          KeyType: HASH
+
+Outputs:
+  TableName:
+    Value: !Ref FilesTable
